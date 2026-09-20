@@ -1,7 +1,7 @@
 
 import pandas as pd
 import joblib
-
+from sklearn.compose import TransformedTargetRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
@@ -98,6 +98,12 @@ df = df[
     df[TARGET] > 9
 ]
 
+print(df[TARGET].describe())
+print("Sabse badi prices:")
+print(df[TARGET].sort_values().tail(10))
+print("Sabse chhoti prices:")
+print(df[TARGET].sort_values().head(10))
+
 
 # CLEAN NUMERIC COLUMNS
 
@@ -177,6 +183,8 @@ for column in categorical_features:
 # REMOVE DUPLICATES
 
 df = df.drop_duplicates()
+low, high = df[TARGET].quantile([0.01, 0.99])
+df = df[(df[TARGET] >= low) & (df[TARGET] <= high)]
 
 
 print("\nCleaned Dataset Shape:", df.shape)
@@ -274,13 +282,13 @@ preprocessor = ColumnTransformer(
 
 regressor = RandomForestRegressor(
 
-    n_estimators=300,
+    n_estimators=100,
 
-    max_depth=25,
+    max_depth=20,
 
-    min_samples_split=2,
+    min_samples_split=5,
 
-    min_samples_leaf=1,
+    min_samples_leaf=3,
 
     random_state=42,
 
@@ -302,7 +310,11 @@ model = Pipeline(
 
         (
             "regressor",
-            regressor
+            TransformedTargetRegressor(
+                regressor=regressor,
+                func=np.log1p,
+                inverse_func=np.expm1
+            )
         )
 
     ]
@@ -379,7 +391,8 @@ MODEL_FILE = "house_price_model.pkl"
 
 joblib.dump(
     model,
-    MODEL_FILE
+    MODEL_FILE,
+    compress=3
 )
 
 
