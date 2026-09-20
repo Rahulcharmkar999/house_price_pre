@@ -1,6 +1,27 @@
 /* =========================================================
-   HOUSE PRICE AI - PROFESSIONAL REGISTER PAGE
+   HOUSE PRICE AI - REGISTER PAGE (refined)
+   Class names are unchanged, so your existing HTML works as-is.
    ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap");
+
+:root {
+    --ink: #0c1a30;
+    --ink-soft: #16294a;
+    --brass: #f2b45a;
+    --brass-deep: #c98a1d;
+    --paper: #f8fafc;
+    --line: #d5dde8;
+    --muted: #5d7291;
+    --link: #1a4fa0;
+    --danger: #b3261e;
+
+    --header-h: 84px;
+
+    --font-display: "Bricolage Grotesque", "Segoe UI", Arial, sans-serif;
+    --font-body: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+}
+
 
 /* ---------- RESET ---------- */
 
@@ -17,43 +38,73 @@ body {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #07111f;
-    overflow: hidden;
+    font-family: var(--font-body);
+    background: var(--ink);
+    overflow-x: hidden;
 }
 
 
 /* =========================================================
-   MAIN PAGE
+   PAGE + HEADER BAR
    ========================================================= */
 
 .register-container {
     position: relative;
-
-    width: 100%;
-    height: 100vh;
-    min-height: 650px;
+    isolation: isolate;
 
     display: flex;
 
-    overflow: hidden;
+    width: 100%;
+    min-height: 100vh;
+
+    background-color: var(--ink);
 
     background-image:
         linear-gradient(
             90deg,
-            rgba(4, 8, 22, 0.82) 0%,
-            rgba(5, 9, 24, 0.65) 42%,
-            rgba(7, 10, 28, 0.42) 100%
+            rgba(6, 12, 26, 0.88) 0%,
+            rgba(8, 15, 32, 0.66) 50%,
+            rgba(10, 18, 38, 0.40) 100%
         ),
+        radial-gradient(
+            60% 55% at 18% 40%,
+            rgba(242, 180, 90, 0.12),
+            transparent 70%
+        ),
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
         url("/static/buildings.png");
 
-    background-size: cover;
+    background-size: cover, cover, 64px 64px, 64px 64px, cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat, no-repeat, repeat, repeat, no-repeat;
 }
 
+/* Top bar (sits above the photo, below logo and cards) */
+.register-container::before {
+    content: "";
 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 
+    height: var(--header-h);
+
+    background: rgba(12, 26, 48, 0.92);
+    border-bottom: 1px solid rgba(242, 180, 90, 0.35);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    z-index: 1;
+}
+
+.left-section {
+    order: 1;
+    flex: 1;
+    min-width: 0;
+}
 
 
 /* =========================================================
@@ -62,427 +113,278 @@ body {
 
 .logo {
     position: absolute;
-
-    top: 28px;
+    top: 0;
     left: 42px;
+
+    height: var(--header-h);
 
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
 
     color: #ffffff;
 
-    font-size: 29px;
-    font-weight: 700;
-
+    font-family: var(--font-display);
+    font-size: 27px;
+    font-weight: 800;
     letter-spacing: -0.5px;
 
-    z-index: 100;
+    z-index: 3;
 }
 
 .logo i {
-    width: auto;
-    height: auto;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    background: transparent;
-
-    color: #ffffff;
-
-    font-size: 32px;
-
-    border-radius: 0;
-
-    box-shadow: none;
+    color: var(--brass);
+    font-size: 28px;
 }
 
 
 /* =========================================================
-   RIGHT SIDE CONTENT
+   MARKETING CONTENT
    ========================================================= */
 
 .left-content {
     position: absolute;
 
-    top: 150px;
-    right: 10%;
+    top: calc(var(--header-h) + 64px);
+    left: 12%;
 
-    width: 500px;
-    max-width: 600px;
-
-    margin: 0;
-
-    z-index: 20;
-
-    color: #cfc1c1;
-}
-
-
-/* =========================================================
-   MAIN HEADING
-   ========================================================= */
-
-.left-content h1 {
-    margin: 0 0 20px;
+    width: min(500px, 42vw);
 
     color: #ffffff;
 
-    font-size: clamp(42px, 4vw, 58px);
-
-    line-height: 1.05;
-
-    font-weight: 800;
-
-    letter-spacing: -2px;
-
-    text-shadow:
-        0 5px 20px rgba(0, 0, 0, 0.45);
+    z-index: 20;
 }
 
+.left-content h1 {
+    margin-bottom: 20px;
 
-/* Highlight */
+    color: #ffffff;
+
+    font-family: var(--font-display);
+    font-size: clamp(40px, 4vw, 56px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.45);
+}
 
 .left-content h1 span {
     display: block;
-
     margin-top: 4px;
 
-    color: #8f6cff;
-
+    color: var(--brass);
     font-size: inherit;
-
     font-weight: 800;
-
-    text-shadow:
-        0 4px 25px rgba(143, 108, 255, 0.30);
 }
-
-
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
 
 .left-content > p {
     width: 470px;
     max-width: 100%;
 
-    margin: 0 0 30px;
+    margin-bottom: 30px;
 
     color: rgba(255, 255, 255, 0.88);
 
     font-size: 17px;
-
     line-height: 1.65;
 
-    font-weight: 500;
-
-    text-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.50);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 
-/* =========================================================
-   FEATURES
-   ========================================================= */
+/* ---------- FEATURES ---------- */
 
 .features {
     display: flex;
-
     flex-direction: column;
-
-    gap: 14px;
+    gap: 12px;
 
     width: 100%;
 }
-
-
-/* =========================================================
-   FEATURE CARD
-   ========================================================= */
 
 .feature {
     position: relative;
 
-    width: 100%;
-    min-height: 76px;
-
     display: flex;
     align-items: center;
+    gap: 16px;
 
-    gap: 18px;
+    width: 100%;
+    min-height: 72px;
 
     padding: 12px 20px;
 
     border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
 
-    border-radius: 16px;
+    background: rgba(12, 26, 48, 0.72);
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(20, 21, 35, 0.86),
-            rgba(31, 29, 43, 0.78)
-        );
-
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
     color: #ffffff;
 
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
 
-    box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.28);
-
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
+    transition: border-color 0.2s ease;
 }
-
-
-/* Small left accent */
 
 .feature::before {
     content: "";
 
     position: absolute;
-
     left: -1px;
-    top: 17px;
+    top: 50%;
 
     width: 3px;
-    height: 42px;
+    height: 40px;
 
-    border-radius: 0 5px 5px 0;
+    transform: translateY(-50%);
 
-    background: #9470ff;
-
-    opacity: 0.7;
+    border-radius: 0 4px 4px 0;
+    background: var(--brass);
 }
-
-
-/* Hover */
 
 .feature:hover {
-    transform: translateX(7px);
-
-    border-color:
-        rgba(148, 112, 255, 0.45);
-
-    box-shadow:
-        0 16px 38px rgba(0, 0, 0, 0.35),
-        0 0 20px rgba(148, 112, 255, 0.08);
+    border-color: rgba(242, 180, 90, 0.55);
 }
 
-
-/* =========================================================
-   FEATURE ICON
-   ========================================================= */
-
 .feature i {
-    width: 48px;
-    height: 48px;
-
-    min-width: 48px;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border: 1px solid rgba(153, 119, 255, 0.40);
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
 
-    border-radius: 13px;
+    border: 1px solid rgba(242, 180, 90, 0.4);
+    border-radius: 12px;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(104, 67, 190, 0.45),
-            rgba(67, 43, 126, 0.35)
-        );
+    background: rgba(242, 180, 90, 0.12);
 
-    color: #a987ff;
-
-    font-size: 20px;
-
-    box-shadow:
-        inset 0 0 15px rgba(150, 115, 255, 0.06);
-
-    transition: transform 0.25s ease;
-}
-
-.feature:hover i {
-    transform: scale(1.07);
+    color: var(--brass);
+    font-size: 19px;
 }
 
 
 /* =========================================================
-   RIGHT SECTION
+   FORM SIDE
    ========================================================= */
 
 .right-section {
     position: relative;
-
-    width: 50%;
-
-    min-width: 0;
+    order: 2;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    padding: 20px;
+    width: 55%;
+    min-width: 0;
+
+    padding: calc(var(--header-h) + 16px) 20px 24px;
 
     z-index: 50;
 }
 
-
-/* =========================================================
-   REGISTER CARD
-   ========================================================= */
-
 .register-card {
-    width: min(455px, 100%);
+    width: min(440px, 100%);
 
-    padding: 30px 38px 28px;
+    padding: 30px 36px 28px;
 
-    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
 
-    background:
-        rgba(240, 237, 237, 0.97);
-
-    border:
-        1px solid rgba(255, 255, 255, 0.9);
+    background: var(--paper);
 
     box-shadow:
         0 25px 70px rgba(0, 0, 0, 0.42),
         0 5px 20px rgba(0, 0, 0, 0.15);
 
     text-align: center;
-    animation: registerCard 0.65s ease-out;
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    
+    animation: cardIn 0.6s ease-out both;
 }
 
-
-/* =========================================================
-   REGISTER ICON
-   ========================================================= */
-
 .register-icon {
-    width: 56px;
-    height: 56px;
-
-    margin: 0 auto 14px;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
+    width: 56px;
+    height: 56px;
+
+    margin: 0 auto 16px;
+
     border-radius: 15px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #182b4d,
-            #0d1b35
-        );
+    background: var(--ink);
 
-    color: #ffffff;
-
+    color: var(--brass);
     font-size: 21px;
 
-    box-shadow:
-        0 8px 20px rgba(13, 27, 53, 0.25);
+    box-shadow: 0 8px 20px rgba(12, 26, 48, 0.25);
 }
-
-
-/* =========================================================
-   REGISTER HEADING
-   ========================================================= */
 
 .register-card h2 {
     margin-bottom: 6px;
 
-    color: #132d55;
+    color: var(--ink);
 
+    font-family: var(--font-display);
     font-size: 28px;
-
+    font-weight: 800;
     line-height: 1.2;
-
-    font-weight: 750;
-
     letter-spacing: -0.5px;
 }
-
-
-/* =========================================================
-   SUBTITLE
-   ========================================================= */
 
 .subtitle {
     margin-bottom: 22px;
 
-    color: #6780a3;
+    color: var(--muted);
 
     font-size: 14px;
-
     line-height: 1.5;
 }
 
 
-/* =========================================================
-   ERROR MESSAGE
-   ========================================================= */
+/* ---------- ERROR ---------- */
 
 .error-message {
     display: flex;
     align-items: center;
-
     gap: 9px;
 
+    margin-bottom: 14px;
     padding: 11px 12px;
 
-    margin-bottom: 13px;
-
-    border: 1px solid #ffd0d0;
-
+    border: 1px solid #f3c7c4;
     border-radius: 10px;
 
-    background: #fff3f3;
+    background: #fdf0ef;
 
-    color: #c62828;
+    color: var(--danger);
 
     font-size: 13px;
-
     text-align: left;
 }
 
 
-/* =========================================================
-   INPUT GROUP
-   ========================================================= */
+/* ---------- INPUTS ---------- */
 
 .input-group {
-    position: relative;
+    display: flex;
+    align-items: center;
 
     width: 100%;
     height: 52px;
 
-    display: flex;
-    align-items: center;
-
     margin-bottom: 13px;
 
-    border: 1px solid #d4dfed;
-
+    border: 1px solid var(--line);
     border-radius: 11px;
 
     background: #ffffff;
@@ -491,42 +393,25 @@ body {
 
     transition:
         border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.2s ease;
+        box-shadow 0.2s ease;
 }
-
-
-/* Focus */
 
 .input-group:focus-within {
-    border-color: #287cf0;
-
-    box-shadow:
-        0 0 0 3px rgba(40, 124, 240, 0.10);
+    border-color: var(--brass-deep);
+    box-shadow: 0 0 0 3px rgba(242, 180, 90, 0.3);
 }
 
-
-/* =========================================================
-   INPUT ICON
-   ========================================================= */
-
 .input-icon {
-    width: 50px;
-    min-width: 50px;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: #35669d;
+    width: 50px;
+    min-width: 50px;
 
-    font-size: 17px;
+    color: var(--ink-soft);
+    font-size: 16px;
 }
-
-
-/* =========================================================
-   INPUT
-   ========================================================= */
 
 .input-group input {
     flex: 1;
@@ -541,37 +426,37 @@ body {
 
     background: transparent;
 
-    color: #172b46;
-
-    font-size: 14px;
+    color: var(--ink);
 
     font-family: inherit;
+    font-size: 15px;
 }
 
-
-/* Placeholder */
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+    -webkit-text-fill-color: var(--ink);
+    caret-color: var(--ink);
+    font-family: inherit;
+    transition: background-color 9999s ease-in-out 0s;
+}
 
 .input-group input::placeholder {
-    color: #7b94b6;
-
+    color: #7f92ad;
     opacity: 1;
 }
 
 
-/* =========================================================
-   TERMS
-   ========================================================= */
+/* ---------- TERMS ---------- */
 
 .terms {
-    margin: 3px 0 17px;
+    margin: 4px 0 18px;
 
-    text-align: left;
+    color: var(--muted);
 
-    color: #667d9c;
-
-    font-size: 12px;
-
+    font-size: 12.5px;
     line-height: 1.5;
+    text-align: left;
 }
 
 .terms label {
@@ -587,84 +472,59 @@ body {
 
     margin-right: 8px;
 
-    accent-color: #287cf0;
+    accent-color: var(--ink);
 
     cursor: pointer;
 }
 
 
-/* =========================================================
-   REGISTER BUTTON
-   ========================================================= */
+/* ---------- BUTTON ---------- */
 
 .register-btn {
-    width: 100%;
-    height: 50px;
-
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 12px;
 
-    gap: 13px;
+    width: 100%;
+    height: 50px;
 
     border: none;
-
     border-radius: 11px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #287cf0,
-            #1767dc
-        );
+    background: var(--ink);
 
     color: #ffffff;
 
     font-family: inherit;
-
     font-size: 15px;
-
     font-weight: 700;
 
     cursor: pointer;
 
-    box-shadow:
-        0 10px 24px rgba(40, 124, 240, 0.25);
+    box-shadow: 0 10px 24px rgba(12, 26, 48, 0.28);
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+        background 0.2s ease,
+        transform 0.2s ease;
 }
-
-
-/* Hover */
 
 .register-btn:hover {
-    transform: translateY(-2px);
-
-    background:
-        linear-gradient(
-            135deg,
-            #2475e5,
-            #125dcc
-        );
-
-    box-shadow:
-        0 14px 30px rgba(40, 124, 240, 0.32);
+    background: var(--ink-soft);
+    transform: translateY(-1px);
 }
-
-
-/* Click */
 
 .register-btn:active {
     transform: translateY(0);
 }
 
-
-/* Arrow */
+.register-btn:focus-visible {
+    outline: 3px solid var(--brass);
+    outline-offset: 2px;
+}
 
 .register-btn i {
+    color: var(--brass);
     font-size: 14px;
 
     transition: transform 0.2s ease;
@@ -675,27 +535,23 @@ body {
 }
 
 
-/* =========================================================
-   LOGIN LINK
-   ========================================================= */
+/* ---------- LOGIN LINK ---------- */
 
 .login-link {
-    margin-top: 19px;
+    margin-top: 18px;
 }
 
 .login-link p {
-    color: #7185a0;
-
-    font-size: 13px;
+    color: var(--muted);
+    font-size: 13.5px;
 }
 
 .login-link a {
     margin-left: 4px;
 
-    color: #176ee5;
+    color: var(--link);
 
     font-weight: 700;
-
     text-decoration: none;
 }
 
@@ -703,211 +559,138 @@ body {
     text-decoration: underline;
 }
 
-
-/* =========================================================
-   HEADER LOGIN
-   ========================================================= */
-
-/*
-   Existing HTML ke according ye automatically
-   right side mein rahega.
-*/
-
-.register-container > .left-section::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100vw;
-    height: 84px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(9, 78, 155, 0.92),
-            rgba(24, 126, 226, 0.84)
-        );
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-
-    z-index: -1;
+.login-link a:focus-visible {
+    outline: 2px solid var(--brass-deep);
+    outline-offset: 2px;
+    border-radius: 3px;
 }
 
 
 /* =========================================================
-   HEADER SPACING
+   ANIMATION (one entrance, on the form card only)
    ========================================================= */
 
-.logo {
-    position: relative;
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
 
-    z-index: 5;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .register-card {
+        animation: none;
+    }
+
+    .register-btn,
+    .register-btn i,
+    .feature {
+        transition: none;
+    }
 }
 
 
 /* =========================================================
-   RESPONSIVE - 1200px
+   RESPONSIVE
    ========================================================= */
 
 @media (max-width: 1200px) {
 
-    .left-content {
-        right: 3%;
-        width: 440px;
-    }
-
     .left-content h1 {
-        font-size: 46px;
+        font-size: 44px;
     }
 
     .left-content > p {
         font-size: 16px;
     }
-
-    .feature {
-        min-height: 70px;
-    }
-
-    .register-card {
-        width: 420px;
-    }
 }
-
-
-/* =========================================================
-   RESPONSIVE - 1000px
-   ========================================================= */
 
 @media (max-width: 1000px) {
 
-    .left-section {
-        width: 50%;
-        padding-left: 28px;
-    }
-
-    .right-section {
-        width: 50%;
+    .logo {
+        left: 28px;
     }
 
     .left-content {
-        top: 210px;
-        right: 2%;
-
-        width: 390px;
+        top: calc(var(--header-h) + 40px);
+        left: 4%;
     }
 
     .left-content h1 {
-        font-size: 40px;
+        font-size: 36px;
     }
 
     .left-content > p {
         width: 100%;
-
         font-size: 15px;
     }
 
     .feature {
-        min-height: 65px;
-
+        min-height: 64px;
         padding: 9px 14px;
-
         font-size: 15px;
     }
 
     .feature i {
         width: 42px;
         height: 42px;
-
         min-width: 42px;
     }
 
     .register-card {
-        width: 390px;
-
         padding: 28px 30px;
     }
 }
 
-
-/* =========================================================
-   MOBILE / TABLET
-   ========================================================= */
-
+/* Tablet / mobile: hide the marketing column, show only the form */
 @media (max-width: 850px) {
 
-    body {
-        overflow-y: auto;
-    }
-
     .register-container {
-        min-height: 100vh;
-
-        height: auto;
-
         display: block;
-
-        overflow: visible;
     }
 
     .left-section {
-        width: 100%;
-
-        min-height: 100vh;
-
-        padding: 25px 20px;
-
-        display: flex;
-    }
-
-    .right-section {
-        width: 100%;
-
-        min-height: 100vh;
-
-        padding: 110px 20px 30px;
+        height: 0;
     }
 
     .left-content {
         display: none;
     }
 
-    .register-card {
-        width: min(450px, 100%);
-    }
+    .right-section {
+        width: 100%;
+        min-height: 100vh;
 
-    .register-container > .left-section::before {
-        height: 80px;
+        padding: calc(var(--header-h) + 24px) 20px 30px;
     }
 }
 
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
 @media (max-width: 500px) {
 
+    :root {
+        --header-h: 72px;
+    }
+
     .logo {
-        font-size: 23px;
+        left: 20px;
+        font-size: 22px;
     }
 
     .logo i {
-        width: 45px;
-        height: 45px;
-
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .right-section {
-        padding: 100px 14px 25px;
+        padding: calc(var(--header-h) + 18px) 14px 25px;
     }
 
     .register-card {
         padding: 26px 20px 24px;
-
         border-radius: 18px;
     }
 
@@ -919,22 +702,66 @@ body {
         height: 50px;
     }
 }
-@keyframes registerCard {
-    0% {
-        opacity: 0;
-        transform: translateY(45px) scale(0.94);
-        filter: blur(4px);
+
+
+/* =========================================================
+   SHORT SCREENS (laptops): fit the whole card in one view
+   ========================================================= */
+
+@media (max-height: 760px) and (min-width: 851px) {
+
+    :root {
+        --header-h: 68px;
     }
 
-    60% {
-        opacity: 1;
-        transform: translateY(-4px) scale(1.01);
-        filter: blur(0);
+    .logo {
+        font-size: 24px;
     }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
+    .left-content {
+        top: calc(var(--header-h) + 40px);
+    }
+
+    .right-section {
+        padding-top: calc(var(--header-h) + 10px);
+        padding-bottom: 12px;
+    }
+
+    .register-card {
+        padding: 22px 32px 20px;
+    }
+
+    .register-icon {
+        width: 48px;
+        height: 48px;
+
+        margin-bottom: 10px;
+
+        font-size: 18px;
+    }
+
+    .register-card h2 {
+        font-size: 25px;
+    }
+
+    .subtitle {
+        margin-bottom: 14px;
+    }
+
+    .input-group {
+        height: 46px;
+        margin-bottom: 10px;
+    }
+
+    .terms {
+        margin: 2px 0 12px;
+    }
+
+    .register-btn {
+        height: 46px;
+    }
+
+    .login-link {
+        margin-top: 12px;
     }
 }
