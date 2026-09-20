@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | House Price AI</title>
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- Login CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='login.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="login-container">
+
+
+    <!-- =================================
+         LEFT SECTION
+    ================================== -->
+
+    <div class="left-section">
+
+
+        <div class="logo">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Home AI</span>
+
+        </div>
+
+
+        <div class="left-content">
+
+
+            <h1>
+
+                Choose Your
+
+                <span>Dream Home</span>
+
+            </h1>
+
+
+            <p>
+
+                Use Artificial Intelligence to
+                estimate house prices quickly
+                and easily.
+
+            </p>
+
+
+            <div class="features">
+
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                    <span>
+                        AI Powered Prediction
+                    </span>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>
+                        Smart Price Estimation
+                    </span>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-bolt"></i>
+
+                    <span>
+                        Fast & Easy
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================
+         RIGHT SECTION
+    ================================== -->
+
+    <div class="right-section">
+
+
+        <div class="login-card">
+
+
+            <div class="login-icon">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+
+            <h2>
+                Welcome Back!
+            </h2>
+
+
+            <p class="subtitle">
+
+                Login to access House Prices
+
+            </p>
+
+
+            <!-- ERROR MESSAGE -->
+
+            {% if error %}
+
+            <div class="error-message">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                <span>{{ error }}</span>
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- =================================
+                 LOGIN FORM
+            ================================== -->
+
+            <form action="/login" method="POST">
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+
+                    <div class="input-icon">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                    </div>
+
+
+                    <input
+
+                        type="email"
+
+                        name="email"
+
+                        placeholder="Email Address"
+
+                        required
+
+                    >
+
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+
+                    <div class="input-icon">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                    </div>
+
+
+                    <input
+
+                        type="password"
+
+                        name="password"
+
+                        placeholder="Password"
+
+                        required
+
+                    >
+
+
+                </div>
+
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+
+                    type="submit"
+
+                    class="login-btn"
+
+                >
+
+                    <span>
+                        Login
+                    </span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+            </form>
+
+
+            <!-- REGISTER -->
+
+            <div class="register-link">
+
+                <p>
+
+                    Don't have an account?
+
+                    <a href="/register">
+                        Create Account
+                    </a>
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

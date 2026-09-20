@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>HomeAI - House Price Predictor</title>
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="app-container">
+
+
+
+    <aside class="sidebar">
+
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🏠
+            </div>
+
+            <div>
+
+                <h2>Home AI</h2>
+
+                <span>Price Predictor</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="side-content">
+
+
+            <h3>
+                AI House Assistant
+            </h3>
+
+
+            <p>
+
+                Get an estimated house price
+                by answering a few simple questions.
+
+            </p>
+
+
+            <div class="feature">
+
+                <span>🤖</span>
+
+                <div>
+
+                    <strong>
+                        AI Prediction
+                    </strong>
+
+                    <small>
+                        Machine Learning based
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <span>⚡</span>
+
+                <div>
+
+                    <strong>
+                        Instant Result
+                    </strong>
+
+                    <small>
+                        Fast price estimation
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <span>🔒</span>
+
+                <div>
+
+                    <strong>
+                        Simple & Private
+                    </strong>
+
+                    <small>
+                        No complicated forms
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="sidebar-footer">
+
+            <span class="online-dot"></span>
+
+            AI Assistant Online
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         MAIN CHAT
+    =========================================== -->
+
+    <main class="chat-section">
+
+
+        <!-- HEADER -->
+
+        <header class="chat-header">
+
+
+            <!-- BOT PROFILE -->
+
+            <div class="bot-profile">
+
+
+                <div class="bot-avatar">
+
+                    🤖
+
+                    <span class="status"></span>
+
+                </div>
+
+
+                <div>
+
+                    <h1>
+                        Home AI Assistant
+                    </h1>
+
+                    <p>
+                        House Price Prediction Bot
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- WELCOME USER -->
+
+            <div class="welcome-user">
+
+                <h3>
+                    Welcome, {{ name }} 🧑‍💻
+                </h3>
+
+            </div>
+
+
+
+            <!-- HEADER BUTTONS -->
+
+            <div class="header-actions">
+
+
+                <button
+                    class="restart-btn"
+                    onclick="restartChat()"
+                >
+
+                    ↻ Restart
+
+                </button>
+
+
+                <a
+                    href="/logout"
+                    class="logout-btn"
+                >
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    Logout
+
+                </a>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- ==========================================
+             PROGRESS
+        =========================================== -->
+
+        <div class="progress-area">
+
+
+            <div class="progress-text">
+
+                <span>
+                    Property Details
+                </span>
+
+                <span id="progressText">
+                    0 / 9
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                ></div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ==========================================
+             CHAT MESSAGES
+        =========================================== -->
+
+        <div
+            id="chatBox"
+            class="chat-box"
+        ></div>
+
+
+
+        <!-- ==========================================
+             INPUT
+        =========================================== -->
+
+        <div class="input-area">
+
+
+            <div class="input-wrapper">
+
+
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Type your answer..."
+                    autocomplete="off"
+                >
+
+
+                <button
+                    id="sendBtn"
+                    type="button"
+                >
+
+                    ➤
+
+                </button>
+
+
+            </div>
+
+
+            <p class="input-hint">
+
+                Press Enter to send your answer
+
+            </p>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- ==========================================
+     JAVASCRIPT
+=========================================== -->
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+
+</body>
+
+</html>
+

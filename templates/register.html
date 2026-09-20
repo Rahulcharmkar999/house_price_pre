@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Register | House Price AI</title>
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- Register CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='register.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="register-container">
+
+
+    <!-- =================================
+         LEFT SECTION
+    ================================== -->
+
+    <div class="left-section">
+
+
+        <div class="logo">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Home AI</span>
+
+        </div>
+
+
+        <div class="left-content">
+
+
+            <h1>
+
+                Create Your
+
+                <span>Account</span>
+
+            </h1>
+
+
+            <p>
+
+                Create your account and use
+                Artificial Intelligence to
+                predict house prices.
+
+            </p>
+
+
+            <div class="features">
+
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    <span>
+                        Easy Registration
+                    </span>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                    <span>
+                        AI Price Prediction
+                    </span>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>
+                        Smart Analysis
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================
+         RIGHT SECTION
+    ================================== -->
+
+    <div class="right-section">
+
+
+        <div class="register-card">
+
+
+            <div class="register-icon">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+            </div>
+
+
+            <h2>
+                Create Account
+            </h2>
+
+
+            <p class="subtitle">
+
+                Register to continue
+
+            </p>
+
+
+            <!-- ERROR -->
+
+            {% if error %}
+
+            <div class="error-message">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                <span>{{ error }}</span>
+
+            </div>
+
+            {% endif %}
+
+
+
+            <!-- =================================
+                 REGISTER FORM
+            ================================== -->
+
+            <form action="/register" method="POST">
+
+
+                <!-- NAME -->
+
+                <div class="input-group">
+
+
+                    <div class="input-icon">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+
+                    <input
+
+                        type="text"
+
+                        name="name"
+
+                        placeholder="Full Name"
+
+                        required
+
+                    >
+
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+
+                    <div class="input-icon">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                    </div>
+
+
+                    <input
+
+                        type="email"
+
+                        name="email"
+
+                        placeholder="Email Address"
+
+                        required
+
+                    >
+
+
+                </div>
+
+
+
+                <!-- PHONE -->
+
+                <div class="input-group">
+
+
+                    <div class="input-icon">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                    </div>
+
+
+                    <input
+
+                        type="tel"
+
+                        name="phone"
+
+                        placeholder="Phone Number"
+
+                    >
+
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+
+                    <div class="input-icon">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                    </div>
+
+
+                    <input
+
+                        type="password"
+
+                        name="password"
+
+                        placeholder="Password"
+
+                        required
+
+                    >
+
+
+                </div>
+
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="input-group">
+
+
+                    <div class="input-icon">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                    </div>
+
+
+                    <input
+
+                        type="password"
+
+                        name="confirm_password"
+
+                        placeholder="Confirm Password"
+
+                        required
+
+                    >
+
+
+                </div>
+
+
+
+                <!-- TERMS -->
+
+                <div class="terms">
+
+
+                    <label>
+
+                        <input
+
+                            type="checkbox"
+
+                            name="terms"
+
+                            required
+
+                        >
+
+                        I agree to the Terms & Conditions
+
+                    </label>
+
+
+                </div>
+
+
+
+                <!-- REGISTER BUTTON -->
+
+                <button
+
+                    type="submit"
+
+                    class="register-btn"
+
+                >
+
+                    <span>
+                        Create Account
+                    </span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- LOGIN LINK -->
+
+            <div class="login-link">
+
+                <p>
+
+                    Already have an account?
+
+                    <a href="/login">
+                        Login
+                    </a>
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
